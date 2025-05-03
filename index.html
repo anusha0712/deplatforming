@@ -251,6 +251,82 @@
             overflow-x: hidden;
         }
 
+        .methodology-container {
+            max-width: 850px;
+            margin: 3em auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+        }
+
+        .methodology-header {
+            padding: 1.2em 1.5em;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .methodology-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+
+        .methodology-toggle {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .methodology-toggle::before,
+        .methodology-toggle::after {
+            content: '';
+            position: absolute;
+            background-color: var(--accent-color);
+            border-radius: 1px;
+        }
+
+        .methodology-toggle::before {
+            width: 2px;
+            height: 16px;
+            top: 4px;
+            left: 11px;
+            transition: transform 0.3s ease;
+        }
+
+        .methodology-toggle::after {
+            width: 16px;
+            height: 2px;
+            top: 11px;
+            left: 4px;
+        }
+
+        .methodology-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .methodology-content-inner {
+            padding: 0 1.5em;
+        }
+
+        .methodology-container.active .methodology-content {
+            padding: 1.5em 0;
+            max-height: 2000px;
+        }
+
+        .methodology-container.active .methodology-toggle::before {
+            transform: rotate(90deg);
+        }
+
        
         @media (max-width: 768px) {
             body {
@@ -281,6 +357,22 @@
 
             blockquote {
                 padding: 1em;
+            }
+
+            .methodology-container {
+                margin: 2em auto;
+            }
+            
+            .methodology-header {
+                padding: 1em;
+            }
+            
+            .methodology-header h2 {
+                font-size: 1.3em;
+            }
+            
+            .methodology-content-inner {
+                padding: 0 1em;
             }
         }
 
@@ -316,6 +408,35 @@
 
             .pullquote {
                 font-size: 1.2em;
+            }
+
+            .methodology-container {
+                margin: 1.5em auto;
+            }
+            
+            .methodology-header {
+                padding: 0.8em;
+            }
+            
+            .methodology-header h2 {
+                font-size: 1.2em;
+            }
+            
+            .methodology-toggle {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .methodology-toggle::before {
+                height: 14px;
+                top: 3px;
+                left: 9px;
+            }
+            
+            .methodology-toggle::after {
+                width: 14px;
+                top: 9px;
+                left: 3px;
             }
         }
     </style>
@@ -526,11 +647,64 @@
             
     </div>
 
+    <div class="content">
+        <div class="methodology-container">
+            <div class="methodology-header">
+                <h2>Methodology</h2>
+                <div class="methodology-toggle"></div>
+            </div>
+            <div class="methodology-content">
+                <div class="methodology-content-inner">
+                    <p>The data used for this project comes from the Campus Deplatforming Database published by the Freedom of Individual Rights and Expression
+                        (FIRE), and contains censorship incidents at U.S. higher education institutions spanning from
+                        1998 to 2025. A deplatforming incident is one where individuals or groups were denied platforms to
+                        express their views on college campuses.</p>
+    
+                    <p>I used web scraping techniques (Playwright and BeautifulSoup) to extract data from 69 pages of FIRE's
+                        embedded table, capturing both the summary information and detailed metadata from each incident's
+                        dedicated page. This technical approach allowed me to compile a comprehensive dataset in an analyzable form</p>
+    
+                    <p>The raw data required some cleaning and standardization. I added additional geographical information, 
+                        corrected inconsistent topic classifications, and separated composite
+                        topics (like "Gender, Sexuality, Race") to enable accurate analysis. I also created a binary variable
+                       to distinguish between attempted and successful deplatforming efforts.
+                    </p>
+    
+                    <p>Approximately 5% of the database lacked clear political motivation classification and data interviews were conducted with FIRE staff to determine 
+                        the basis for catch-all terms such as "Not applicable".
+                    </p>
+    
+                    <p>To identify patterns in campus censorship, I performed data analysis on topics targeted
+                        for deplatforming, political motivations behind censorship attempts, success rates, and
+                        institutional responses over time. I also manually read and annotated incidents that fell under Race, Sexuality and Israel-Palestine
+                        to accurately report on what each political side was trying to censor or was offended by. The visualizations were created using Datawrapper</p>
+    
+                    <p>It's worth noting that this dataset represents a conservative estimate of campus deplatforming
+                        incidents, as acknowledged in FIRE's methodology. The database primarily includes events documented
+                        through media reports, institutional correspondence, and student reporting, followed by FIRE's
+                        fact-checking procedures and at the time of this piece, had been updated on March 20th, 2025.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="footer">
         <div class="content">
             <p>Written, analysed and visualized by <a href="https://anusha0712.github.io">Anusha Subramanian</a>. All rights reserved.</p>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const methodologyHeader = document.querySelector('.methodology-header');
+            const methodologyContainer = document.querySelector('.methodology-container');
+
+            if (methodologyHeader && methodologyContainer) {
+                methodologyHeader.addEventListener('click', function () {
+                    methodologyContainer.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
