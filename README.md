@@ -1,4 +1,4 @@
-# Who Are We Celebrating In The Streets Of NYC?
+# Campus Deplatforming Attempts in USA
 
 ## Introduction
 
