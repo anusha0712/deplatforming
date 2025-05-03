@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Quiet Crisis of Academic Deplatforming</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #952062;
+            --light-accent: #f9ebea;
+            --text-color: #2c3e50;
+            --light-gray: #f4f4f4;
+            --quote-bg: #f9f9f9;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-size: 19px;
+            font-family: 'Source Sans Pro', sans-serif;
+            text-rendering: optimizeLegibility;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 850px;
+            margin: auto;
+            padding: 0 1.5rem;
+        }
+
+        .header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            padding: 4em 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('cover_image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            margin-bottom: 2em;
+            color: white;
+        }
+
+        .header h1,
+        .header .subhead {
+            color: white;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            border-bottom: 1px solid var(--accent-color);
+            color: #6f1849;
+        }
+
+        .footer {
+            background: var(--light-gray);
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 4em;
+            padding: 4em 0;
+        }
+
+        figure {
+            margin: 0;
+            padding-bottom: 1.5em;
+            width: 100%;
+        }
+
+        figcaption {
+            font-size: 0.85em;
+            text-align: center;
+            margin-top: 0.5em;
+            color: #666;
+            font-style: italic;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: bold;
+            font-size: 3.2em;
+            line-height: 1.2;
+            color: var(--primary-color);
+            margin-bottom: 0.2em;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: bold;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin: 1.5em 0 0.5em;
+        }
+
+        h3 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: bold;
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin: 1.2em 0 0.3em;
+        }
+
+        .subhead {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.3em;
+            font-weight: 400;
+            color: #555;
+            line-height: 1.4;
+            max-width: 85%;
+            margin: 0 auto 1em;
+        }
+
+        .byline {
+            font-size: 0.9em;
+            margin-bottom: 2em;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1em;
+        }
+
+        .byline a {
+            font-weight: bold;
+        }
+
+        .date {
+            font-style: italic;
+            color: #888;
+        }
+
+        iframe,
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        p {
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        ul {
+            margin: 0;
+            padding-bottom: 1em;
+        }
+
+        iframe {
+            padding-bottom: 1.2em;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #fffbaf;
+            font-size: 0.85em;
+            padding: 0.1em 0.3em;
+        }
+
+        .full-width {
+            width: 100%;
+            background-color: var(--light-gray);
+            padding: 2em 0;
+            margin: 2em 0;
+        }
+
+        .full-width figure {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        blockquote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 1.5em 0;
+            padding: 1em 2em;
+            background-color: var(--quote-bg);
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+
+        blockquote::before {
+            content: '"';
+            font-size: 4em;
+            font-family: Georgia, serif;
+            color: var(--accent-color);
+            opacity: 0.2;
+            position: absolute;
+            left: 10px;
+            top: -10px;
+        }
+
+        .pullquote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: bold;
+            font-size: 1.6em;
+            line-height: 1.3;
+            color: var(--accent-color);
+            padding: 1em 0;
+            margin: 1em 0;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .highlight-box {
+            background-color: var(--light-accent);
+            padding: 1.5em;
+            margin: 2em 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .highlight-box h3 {
+            margin-top: 0;
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--primary-color);
+        }
+
+        
+        .responsive-container {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+       
+        @media (max-width: 768px) {
+            body {
+                font-size: 17px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .subhead {
+                font-size: 1.1em;
+                max-width: 95%;
+            }
+
+            .pullquote {
+                font-size: 1.4em;
+            }
+
+            .header {
+                min-height: 40vh;
+                padding: 3em 0;
+            }
+
+            .student-quote {
+                flex: 1 1 100%;
+            }
+
+            blockquote {
+                padding: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .header {
+                min-height: 30vh;
+                padding: 2em 0;
+            }
+
+            .content {
+                padding: 0 1rem;
+            }
+
+            .highlight-box {
+                padding: 1em;
+            }
+
+            .full-width {
+                padding: 1em 0;
+            }
+
+            .pullquote {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="content">
+            <h1>The Quiet Crisis of Academic Deplatforming</h1>
+            <p class="subhead">Deplatforming, or censorship by internal or external sources of the accessibility to public events on campus, is alarmingly on the rise. </p>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="byline">
+            <p>By <a href="https://anusha0712.github.io">Anusha Subramanian</a> | <span class="date">May 4, 2025</span></p>
+        </div>
+
+        <p>In January 2025, a panel discussion at UC Berkeley, titled “Feminist and Queer Solidarities with Palestine”, organized
+        by the gender and women’s studies department, came under fire from a faculty member for having an event description that
+        challenged Israel’s claim of widespread sexual assault during the October 7th, 2023 attacks, although multiple news
+        outlets, including Al Jazeera’s I-Unit have found <a href = "https://www.aljazeera.com/news/2024/3/21/october-7-forensic-analysis-shows-hamas-abuses-many-false-israeli-claims">insufficient evidence</a> to support that claim.</p>
+
+        <p><a href = "https://www.haaretz.com/israel-news/2025-01-24/ty-article/.premium/berkeley-event-to-examine-how-zionism-weaponized-feminism-to-serve-a-genocidal-agenda/00000194-9533-da26-add4-ff7be4de0000">First reported in Haaretz</a>, emails leaked to the Israeli 
+            news outlet cited Berkeley law professor, Steven Davidoff
+        Solomon, writing that the event represented a “disgustingly antisemitic new low, even at Berkeley,” to the university
+        administrators. He further warned that this could imperil university funding and expose international students to visa
+        revocations under the Trump administrations crackdown on Pro-Palestinian supporters. The University investigated and
+        eventually concluded that they had “no legitimate ability to alter or cancel”, since it did not go against school
+        policy, especially since the panel did not mandate any kind of student attendance. However, the administrators did
+        remove the contentious event description from the event’s main page. After the decision, Solomon wrote an op-ed (not his
+        first on apparent Antisemitism at Berkeley) titled <a href = "https://www.wsj.com/opinion/mr-trump-investigate-my-campus-hamas-rape-denial-hostile-environment-for-jews-and-women-politics-77dec881">“Mr. Trump, Investigate My Campus”</a>.
+        </p>
+
+        <p>In a dystopian political climate rife with attacks on the First Amendment and right to express political views freely,
+        college campuses – which were always hotbeds of political activism – are being thrown into the spotlight even more than
+        before. While protests may be front and center, a different, quieter type of censorship, like the example above, called
+        “Deplatforming”, continues to grow on higher education campuses across the United States.
+        </p>
+
+        <p>“Deplatforming is the successful censorship of, or the attempt to censor, campus events open to the public.
+        Deplatforming can include disinviting speakers, canceling performances, taking down art exhibits, or preventing the
+        showing of a film. It can include censorship or attempts at censorship that occurred either before or during an event,
+        but not those that occurred after an event,” according to the Foundation of Individual Rights and Expression. In early
+        2024, the nonpartisan advocacy organization released their <a href = "https://www.thefire.org/research-learn/campus-deplatforming-database">"Campus Deplatforming Database”</a>, chronicling attempted or
+        successful deplatforming incidents on college campuses from 1998 to 2024. Although their website states that the data is
+        self-reported, FIRE staffer Sean Stevens, who is also responsible for the maintenance of this database, said that most
+        of these incidents are catalogued using media reports, student journalism and the letters that FIRE writes to higher
+        education institutions when it believes that a violation of individual freedom or rights to expression have occurred.
+        FIRE makes it clear that the data collected is still an undercount, with many censorship attempts likely flying under
+        the radar despite their best efforts to catalogue them.
+        </p>
+        <br>
+
+        <iframe title="rise of campus deplatforming" aria-label="line Chart" id="datawrapper-chart-MLQxw"
+            src="https://datawrapper.dwcdn.net/zJBSS/1/" scrolling="no" frameborder="0"
+            style="width: 100%; height: 500px; border: none;" height="757" data-external="1">
+        </iframe>
+        
+        <br>
+        <p>Campus deplatforming attempts have shot up post-pandemic, hitting a historic high of 172 incidents in 2024, with over
+        half of those incidents resulting in successful censorship of artwork, commencement speeches, performances and others.
+        For example, West Texas A&M University’s President banned a student group’s charity drag show in 2023 based on his own
+        personal beliefs, calling them “derisive, divisive and demoralizing misogyny”. The ban remained in place all through
+        2024, preventing the show’s performance.</p>
+
+        <p>2025 has already seen 44 deplatforming attempts as of March 20th, which is when the database was last updated.</p>
+
+        <h2>Who Is Censoring Who?</h2>
+
+        <p>Roughly 95% of the deplatforming incidents came from sources that had a clear liberal or conservative political ideology
+        and each party initiated a censorship attempt towards the other roughly the same number of times. Deplatforming attempts
+        started by the left were successful half the time whereas the ones initiated by the right were successful one-third of
+        the times.
+        </p>
+
+        <p>To conclude that the “left censors more” from these raw numbers across more than 25 years would not carry the required
+        nuance, before looking into how important yet contentious topics were handled by either side and what each considered
+        offensive.
+        </p>
+
+        <p>Here are the ten topics that faced the most deplatforming incidents from the left as well as the right. They are
+        arranged from the most polarising topics (where the two sides differed significantly in their frequency of censorship)
+        to the least polarising (where the two parties tried to censor the other with similar frequency).
+        </p>
+
+        <br>
+
+        <iframe title="contentious" aria-label="bar Chart" id="datawrapper-chart-MLQxw"
+            src="https://datawrapper.dwcdn.net/Oocnz/2/" scrolling="no" frameborder="0"
+            style="width: 100%; height: 510px; border: none;" height="100%" data-external="1">
+        </iframe>
+
+        <br>
+
+        <!-- HEADER SECTION
+
+        <div class="pullquote">
+            "When students no longer feel safe to express unpopular viewpoints, we've failed at our primary educational
+            mission."
+        </div>
+        -->
+
+        <h3>Race</h3>
+
+        <p>The left tried to deplatform public events surrounding racial discourse nearly five times the amount that the right did.
+        With race and most other topics, many of the deplatforming incidents were logged in FIRE’s database as compound topics –
+        that is, as a combination of two or more topics. For example, race and immigration or race and sexuality often went
+        together.
+        </p>
+
+        <p>Analysis of all the incidents that had race as at least one topic revealed patterns of attempted censorship.
+        </p>
+
+        <p>Left-initiated deplatforming attempts around race typically targeted speakers accused of racism or racially insensitive
+        behavior. In many cases, students or faculty protested invitations extended to individuals who had made controversial
+        statements about race, were involved in racially charged incidents, or were seen as representing policies or viewpoints
+        that marginalized Black or Indigenous communities. For example, when Jared Taylor, media-dubbed white supremecist and
+        self monikered “white advocate” and “racialist who believes in race-realism”, was invited to speak at Arizona State
+        University in 2022, several student and outside groups called on university administrators to <a href = "https://nevalleynews.org/16748/news/white-nationalist-jared-taylor-to-speak-at-asu-amid-growing-condemnation/">rescind his invite</a> due to
+        Taylor’s “white identity politics’. The university did not cave and Taylor spoke successfully.</p>
+
+        <p>On the other hand, right-initiated deplatforming around race centered on pushback against discussions of structural
+        racism or white supremacy, often targeting speakers, faculty, or artists seen as promoting “divisive” or “anti-American”
+        narratives, arguing that such content unfairly stigmatized white students or portrayed the U.S. in a negative light. For
+        instance, in 2022, Daytona State College cancelled an art exhibition titled “Stranger Fruit” depicting Black mothers
+        holding their children in lifeless poses to symbolize enduring maternal and familial grief in the face of racially
+        motivated police brutality. The exhibition room’s HVAC system was cited as the reason for indefinite cancellation but
+        <a href="https://www.thefire.org/sites/default/files/2023/09/NCAC%20ACLU-FL%20FIRE%20-%20Joint%20Letter%20to%20Daytona%20State%20College.pdf">three whistleblowers</a> revealed that the school was worried about the politically charged nature of the exhibit,
+        especially because of their small police training program.</p>
+
+        <h3>Sexuality</h3>
+
+        <p>When it comes to sexuality related deplatforming events, the right initiated them 2.5 times more than the left.</p>
+
+        <p>Right-wing deplatforming about sexuality revolved around drag performances, queer art, or sex education events and
+        argued that such events are “inappropriate” or “immoral,” especially if they involve young audiences or are publicly
+        funded. For example, the Purdue University Student Union Board planned to host an event called <a href="https://www.purdueexponent.org/campus/article_5a2cfce2-6572-11ed-a97e-7b76edca97ab.html">"Sex in the Dark"</a>, a sex
+        education presentation that would allow students to ask anonymous questions to two "sex experts". However,
+        administrators postponed the event after receiving complaints from another student group called Boiler Catholics that
+        the event was "promoting premarital sex and hookup culture." The event does not appear to have been rescheduled.</p>
+
+        <p>Left-initiated deplatforming attempts involving sexuality often target events or speakers that are seen as promoting
+        homophobia, transphobia, or exclusionary gender politics. In 2022, one such event led by students in Ohio State
+        University called for the <a href="https://www.change.org/p/osu-cancel-homophobic-donor-pat-gelsinger-as-spring-commencement-speaker?source_location=search">disinvitation of Patrick Geslinger</a>, then CEO of intel, as commencement speaker, for his
+        anti-LGBTQ views and support of campus organizations that forbid LGBTQ volunteers and staff.</p>
+
+        <h3>Israel-Palestine</h3>
+
+        <p>As the Palestinian genocide continues, higher education has been rife with both Pro-Palestinian and Pro-Israel protests.
+        This trend is also reflected in deplatforming events where each side had equally attempted to censor incidents related
+        to Israel or Palestine.</p>
+
+        <p>Left-led deplatforming attempts related to Israel often emerge when the invited speakers are linked to pro-Israel
+        military, political, or corporate institutions. In 2024, Yale Law School's chapter of Students for Justice in Palestine
+        called on the university to <a href="https://www.nationalreview.com/corner/psychologically-unsafe-yale-law-students-protest-idf-soldiers-campus-visit/">cancel</a> former IDF soldier, Ezra Grushko's speech 
+        because "the platforming of an IDF combatant recently returned from
+        Israel's atrocities in Gaza makes many of us—especially Palestinian Arab, Muslim, Black, and brown students — feel
+        physically and psychologically unsafe and unwelcome in our own school," and because he planned to share his "personal
+        perspective" on fighting "terrorist organizations in Gaza" — statements that SJP considered Islamophobic and racist.
+        Grushko spoke successfully.</p>
+
+        <p>Right-aligned protests against Israel/Palestine events usually object to pro-Palestinian or anti-Israel speakers, and
+        believe those are threatening to Jewish students' safety. In recent events, conservative alumni and advocacy groups have
+        pushed universities to cancel these events outright, and have criticized administrations for allowing platforms that
+        challenge U.S. and Israeli foreign policy. At the University of North Texas this year, 
+        multiple <a href="https://x.com/realmitchlittle/status/1896667487321952705">state representatives</a> wrote to the
+        university demanding the cancellation of Associate Dean of Student Affairs, Nancy Stockdale's lecture titled
+        "Palestinian Children and the Politics of Genocide," scheduled as part of a commemorative lecture series , because
+        Stockdale used the term "genocide" in the lecture's title. Stockdale successfully presented her lecture on April 3rd.</p>
+
+    </div>
+
+
+    <div class="content">
+        <h2>State Patterns Of Deplatforming</h2>
+
+        <br>
+
+        <iframe title="map of censorship" aria-label="map" id="datawrapper-chart-MLQxw"
+            src="https://datawrapper.dwcdn.net/JnYxK/1/" scrolling="no" frameborder="0"
+            style="width: 100%; height: 600px; border: none;" height="100%" data-external="1">
+        </iframe>
+
+        <br>
+
+
+        <p>On the map above, you can explore how each state deals with deplatforming events and whether the right or left is
+        successful in its deplatforming attempts. The color of the state represents which ideology is receiving more censorship
+        overall.</p>
+
+        <p>For instance, in California, 61% of deplatforming attempts initiated by the left are successful, which means
+        that the majority of the time, the right-wing is being censored. To reiterate, the color of the state reflects which
+        party is being censored more in that region.</p>
+
+        <!-- HEADER SECTION 
+        <blockquote>
+            Academic freedom can, and often does, protect expression and perspectives others might find odious. - Dan Mogulof,
+            Assistant Vice Chancellor of Communications, UC Berkeley
+        </blockquote>
+        -->
+        <p>The map reveals further nuance in the regional rate of success of deplatforming attempts. In states like Ohio and Utah, rate 
+            of successful censorship through deplatforming attempts is fairly similar whether it is initiated by the left or the right. However, 
+            in other states such as Louisiana, the divide is wide, with conservatives facing censorship more. Even though Louisiana is 
+            traditionally a red state, such patterns might indicate that campus poltical activism might not always reflect the state's political bend,
+            further cementing higher education institutions as intersections of independent thought and activism, making it all the more important to protect 
+            the freedom of individual rights and expression exhibited there.</p>
+            
+    </div>
+
+    <div class="footer">
+        <div class="content">
+            <p>Written, analysed and visualized by <a href="https://anusha0712.github.io">Anusha Subramanian</a>. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>
